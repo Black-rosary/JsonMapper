@@ -1,0 +1,4 @@
+services:
+#    yaroslav_json_mapper.example:
+#        class: Yaroslav\JsonMapperBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
