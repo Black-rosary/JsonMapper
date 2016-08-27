@@ -20,6 +20,31 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('yaroslav_json_mapper');
 
+        $rootNode->children()
+                        ->arrayNode('mappers')
+                            ->isRequired()
+                            ->cannotBeEmpty()
+                            ->requiresAtLeastOneElement()
+                            ->useAttributeAsKey('key')
+                            ->prototype('array')
+                            ->children()
+                                ->scalarNode('url')
+                                    ->isRequired()
+                                    ->cannotBeEmpty()
+                                ->end()
+                                ->scalarNode('mapClass')
+                                    ->isRequired()
+                                    ->cannotBeEmpty()
+                                ->end()
+                                ->scalarNode('wrapper')
+                                    ->defaultValue('%yaroslav_json_mapper.default_wrapper.class%')
+                                ->end()
+                                ->variableNode('mapping')
+                                    // TODO: make recursive building of mapping config
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end();
         return $treeBuilder;
     }
 }
