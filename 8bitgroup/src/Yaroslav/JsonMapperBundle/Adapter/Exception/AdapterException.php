@@ -1,13 +1,13 @@
 <?php
 
-namespace Yaroslav\JsonMapperBundle\HttpWrapper\Exception;
+namespace Yaroslav\JsonMapperBundle\Adapter\Exception;
 
 use Exception;
 
 /**
  * DefaultWrapperException Exceptions class
  */
-class DefaultWrapperException extends Exception {
+class AdapterException extends Exception {
 
     /**
      * 

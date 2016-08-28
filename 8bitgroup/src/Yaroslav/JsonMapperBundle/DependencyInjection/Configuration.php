@@ -36,8 +36,8 @@ class Configuration implements ConfigurationInterface
                                     ->isRequired()
                                     ->cannotBeEmpty()
                                 ->end()
-                                ->scalarNode('wrapper')
-                                    ->defaultValue('%yaroslav_json_mapper.default_wrapper.class%')
+                                ->scalarNode('adapter')
+                                    ->defaultValue('%yaroslav_json_mapper.default_adapter.class%')
                                 ->end()
                                 ->variableNode('mapping')
                                     // TODO: make recursive building of mapping config

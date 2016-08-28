@@ -1,0 +1,23 @@
+framework:
+    secret:          'xxxx'
+    session:         false
+    
+yaroslav_json_mapper:
+    mappers:
+        test1:
+            url: http://127.0.0.1:8001/
+            mapClass: "AppBundle/Entity/LocationCollection"
+            mapping: 
+                locations:
+                    type: "AppBundle/Entity/Location[]"
+                    mapping: 
+                        name:
+                            type: string
+                        coordinates:
+                            type: "AppBundle/Entity/Coordinates"
+                            mapping:
+                                long:
+                                   type: float
+                                lat:
+                                   type: float
+            adapter: Yaroslav\JsonMapperBundle\Tests\Resources\Adapter\DummyAdapter

@@ -40,7 +40,7 @@ class YaroslavJsonMapperExtension extends Extension
             $mapperDefinition->addArgument($mapper['url']);
             $mapperDefinition->addArgument($mapper['mapClass']);
             $mapperDefinition->addArgument($mapper['mapping']);
-            $mapperDefinition->addArgument(new Definition($mapper['wrapper']));
+            $mapperDefinition->addArgument(new Definition($mapper['adapter']));
             $nameDefintion = sprintf($this->getAlias() . '_%s', $key);
             $container->setDefinition($nameDefintion, $mapperDefinition);
         }        

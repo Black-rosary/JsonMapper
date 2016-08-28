@@ -5,14 +5,14 @@ namespace Yaroslav\JsonMapperBundle\HttpWrapper\Exception;
 /**
  * CurlWrapper Exceptions class
  */
-class JsonWrapperException extends Exception {
+class JsonWrapperException extends \Exception {
 
     /**
      * Mapping of PHPs error constants to error messages.
      *
      * @var array
      */
-    private $errors = array(
+    private static $errors = array(
         JSON_ERROR_DEPTH            => 'Maximum stack depth exceeded',
         JSON_ERROR_STATE_MISMATCH   => 'Underflow or the modes mismatch',
         JSON_ERROR_CTRL_CHAR        => 'Unexpected control character found',

@@ -34,7 +34,7 @@ class JsonWrapper extends CurlWrapper {
         $data = parent::request($url, $method, $requestParams);
         if (!$data) {
             throw new CurlWrapperException(
-            sprintf('Empty data are returned on get "%s"', $url));
+                        sprintf('Empty data are returned on get "%s"', $url));
         }
         return $this->decode($data);
     }

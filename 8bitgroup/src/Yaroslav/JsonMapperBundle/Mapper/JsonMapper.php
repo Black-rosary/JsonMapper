@@ -2,7 +2,7 @@
 
 namespace Yaroslav\JsonMapperBundle\Mapper;
 
-use Yaroslav\JsonMapperBundle\HttpWrapper\WrapperInterface;
+use Yaroslav\JsonMapperBundle\Adapter\AdapterFindInterface;
 use Yaroslav\JsonMapperBundle\Mapper\Rule\RuleCollection;
 use Yaroslav\JsonMapperBundle\Mapper\Rule\SampleRule;
 use Yaroslav\JsonMapperBundle\Mapper\Exception\JsonMapperException;
@@ -21,9 +21,9 @@ class JsonMapper extends RuleCollection {
      * @param string $url  - URL of source service 
      * @param type $mapClass - root mapped class
      * @param type $mapping - config data determinate of rules of mapping
-     * @param WrapperInterface $wrapper - curl wrapper for access to data.
+     * @param AdapterFindInterface $wrapper - curl wrapper for access to data.
      */
-    public function __construct($url, $mapClass, $mapping, WrapperInterface $wrapper) {
+    public function __construct($url, $mapClass, $mapping, AdapterFindInterface $wrapper) {
         $this->url = $url;
         $this->mapClass = $mapClass;
         $this->buildRules($mapping, $this);
@@ -58,6 +58,9 @@ class JsonMapper extends RuleCollection {
      */
     public function findAll($params = []) {
         $data = $this->wrapper->find($this->url, $params);
+        if (!is_array($data) || !$data) {
+            throw  new JsonMapperException('Not found data for mapping');
+        }
         return $this->map($data['data'], $this->mapClass, $this);
     }
     

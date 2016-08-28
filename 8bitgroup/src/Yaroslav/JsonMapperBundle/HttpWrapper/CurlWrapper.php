@@ -192,6 +192,15 @@ class CurlWrapper {
         }
     }
 
+    
+    /**
+     * 
+     * @return  mixed
+     */
+    public function execute() {
+        return curl_exec($this->ch);
+    }
+
     /**
      * Makes the request of the specified $method to the $url with an optional $requestParams
      *
@@ -209,7 +218,7 @@ class CurlWrapper {
             $this->addRequestParam($requestParams);
         }
         $this->initOptions();
-        $this->response = curl_exec($this->ch);
+        $this->response = $this->execute();
         if ($this->response === false) {
             throw new CurlException($this->ch);
         }
@@ -371,20 +380,6 @@ class CurlWrapper {
         if (!curl_setopt_array($this->ch, $this->options)) {
             throw new CurlWrapperCurlException($this->ch);
         }
-    }
-
-    /**
-     * Converts the cookies array to the correct string format
-     *
-     * @return string
-     */
-    protected function prepareCookies()
-    {
-        $cookiesString = '';
-        foreach ($this->cookies as $cookie => $value) {
-            $cookiesString .= $cookie . '=' . $value . '; ';
-        }
-        return $cookiesString;
     }
 
     /**

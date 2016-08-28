@@ -1,6 +1,6 @@
 parameters:
-    yaroslav_json_mapper.default_wrapper.class: Yaroslav\JsonMapperBundle\HttpWrapper\DefaultWrapper
+    yaroslav_json_mapper.default_adapter.class: Yaroslav\JsonMapperBundle\Adapter\AnyAdapter
     yaroslav_json_mapper.json_mapper.class: Yaroslav\JsonMapperBundle\Mapper\JsonMapper
 services:
-    yaroslav_json_mapper.default_wrapper:
-        class: %yaroslav_json_mapper.default_wrapper.class%
+    yaroslav_json_mapper.default_adapter:
+        class: "%yaroslav_json_mapper.default_adapter.class%"

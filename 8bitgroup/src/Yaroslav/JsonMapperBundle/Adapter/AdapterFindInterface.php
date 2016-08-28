@@ -1,8 +1,8 @@
 <?php
 
-namespace Yaroslav\JsonMapperBundle\HttpWrapper;
+namespace Yaroslav\JsonMapperBundle\Adapter;
 
-interface WrapperInterface {
+interface AdapterFindInterface {
     
     /**
      * Retrun array data for mapping
